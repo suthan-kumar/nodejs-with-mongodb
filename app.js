@@ -7,7 +7,7 @@ require("./models/course");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).send({
     success: true,
     message: "Node.js with Mongodb running",
