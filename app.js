@@ -7,11 +7,19 @@ require("./models/course");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use("/", (req, res) => {
+  res.status(200).send({
+    success: true,
+    message: "Node.js with Mongodb running",
+  });
+});
+
 const StudentRoutes = require("./routes/student");
 
 app.use("/api/student", StudentRoutes);
 
-const DB_URL = "mongodb+srv://admin:fLJOSSExZUDXyNWy@cluster0.woyfv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const DB_URL =
+  "mongodb+srv://admin:fLJOSSExZUDXyNWy@cluster0.woyfv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose.connect(DB_URL, (err) => {
   if (err) {
     console.log(err);
